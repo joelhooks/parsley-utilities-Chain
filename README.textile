@@ -1,0 +1,6 @@
+h2. Overview
+
+The Chain utility for Parsley is a way to set up a simple chain of Commands used as a Finite State Machine for a context. 
+
+h2. Example Usage
+<script src="https://gist.github.com/668046.js"> </script>

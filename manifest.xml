@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<componentPackage>
+    <component id="Chain" class="org.spicefactory.parsley.chaining.tag.ChainTag"/>
+    <component id="Link" class="org.spicefactory.parsley.chaining.tag.LinkTag"/>
+    <component id="LinkConnection" class="org.spicefactory.parsley.chaining.tag.LinkConnectionTag"/>
+</componentPackage>
