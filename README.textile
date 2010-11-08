@@ -4,6 +4,8 @@ This is currently a *proof of concept* project and should not be used for produc
 
 h3. Example Usage
 
+This is an example of how the chain can be declared in a Parsley MXML configuration:
+
 <pre> <?xml version="1.0"?>
 <!-- Parsley Configuration -->
 <mx:Object xmlns:mx="http://www.adobe.com/2006/mxml"
@@ -45,3 +47,8 @@ h3. Example Usage
     </chain:Chain>
 
 </mx:Object></pre>
+
+h3. Building
+
+You will need to link to the manifest.xml to take advantage of the declarative style shown above. 
+Requires Parsley 2.3
