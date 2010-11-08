@@ -1,8 +1,8 @@
-h2. Overview
+This utility is a way to create a Finite State Machine (FSM) for a Parsley Context. The FSM documents and manages a series of N-Branching commands in a chain. The Chain is created either declaratively through MXML configuration or via actionscript. It will respond dynamically to messages within a Context and trigger Parsley style Commands. The logic from moving from state to state is left up to the developer. The Chain will move to a different link based on events and mapped connections to other links within the Chain.
 
-The Chain utility for Parsley is a way to set up a simple chain of Commands used as a Finite State Machine for a context. 
+This is currently a *proof of concept* project and should not be used for production.
 
-h2. Example Usage
+h3. Example Usage
 
 <pre> <?xml version="1.0"?>
 <!-- Parsley Configuration -->
