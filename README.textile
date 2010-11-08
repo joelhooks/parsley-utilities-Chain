@@ -4,4 +4,44 @@ The Chain utility for Parsley is a way to set up a simple chain of Commands used
 
 h2. Example Usage
 
-<script src="https://gist.github.com/668046.js"> </script>
+<pre> <?xml version="1.0"?>
+<!-- Parsley Configuration -->
+<mx:Object xmlns:mx="http://www.adobe.com/2006/mxml"
+           xmlns:chain="http://spicefactory.org/parsley/chain">
+
+    <mx:Script><![CDATA[
+        import events.*
+        import commands.*;
+        ]]>
+    </mx:Script>
+
+    <chain:Chain firstLink="{startup}">
+
+        <chain:Link id="startup" commandClass="{StartupCommand}">
+            <chain:LinkConnection onMessage="{LoadDefaultEnvironmentEvent.LOAD}" toLink="{loadDefaultEnvironment}"/>
+            <chain:LinkConnection onMessage="{LoadSpecialEnvironmentEvent.LOAD}" toLink="{loadSpecialEnvironment}"/>
+            <chain:LinkConnection onMessage="{StartupErrorEvent.ERROR}" toLink="{startupError}"/>
+        </chain:Link>
+
+        <chain:Link id="loadDefaultEnvironment" commandClass="{LoadDefaultEnvironmentModuleCommand}">
+            <chain:LinkConnection onMessage="{EnvironmentLoadedEvent.LOADED}" toLink="{loadLocalConfiguration}"/>
+            <chain:LinkConnection onMessage="{StartupErrorEvent.ERROR}" toLink="{startupError}"/>
+        </chain:Link>
+
+        <chain:Link id="loadSpecialEnvironment" commandClass="{LoadSpecialEnvironmentModuleCommand}">
+            <chain:LinkConnection onMessage="{EnvironmentLoadedEvent.LOADED}" toLink="{loadLocalConfiguration}"/>
+            <chain:LinkConnection onMessage="{StartupErrorEvent.ERROR}" toLink="{startupError}"/>
+        </chain:Link>
+
+        <chain:Link id="initializeServices" commandClass="{InitializeServicesCommand}">
+            <chain:LinkConnection onMessage="{ServicesInitializedEvent.INITIALIZED}" toLink="{startupComplete}"/>
+            <chain:LinkConnection onMessage="{StartupErrorEvent.ERROR}" toLink="{startupError}"/>
+        </chain:Link>
+
+        <chain:Link id="startupComplete" commandClass="{StartupCompleteCommand}"/>
+        
+        <chain:Link id="startupError" commandClass="{StartupErrorCommand}"/>
+
+    </chain:Chain>
+
+</mx:Object></pre>
